@@ -16,7 +16,7 @@ return [
     // 日志记录方式，内置 file socket 支持扩展
     'type'        => 'File',
     // 日志保存目录
-    'path'        => '',
+    'path'        => '../logs/',
     // 日志记录级别
     'level'       => [],
     // 单文件日志写入
@@ -27,4 +27,8 @@ return [
     'max_files'   => 0,
     // 是否关闭日志写入
     'close'       => false,
+    //单个日志文件的大小限制，超过后会自动记录到第二个文件
+    'file_size'     =>2097152,
+    //日志的时间格式，默认是` c `
+    'time_format'   =>'c'
 ];
