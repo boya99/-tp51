@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 
+use mail\Mail;
 use think\Controller;
 use think\facade\Config;
 use think\facade\Env;
@@ -24,6 +25,31 @@ class Index extends Controller
         $body = json_encode($data);
         $res = http_request($url,$body,$method='POST');
         dump($res);
+    }
+    public function sendMail(){
+        //不带附件
+
+        $mail = new Mail();
+//        $res = $mail->sendEMail(['3*****7@qq.com'], '测试邮件主题'. time(), '<h1>这里是邮件内容</h1>' . date('Y-m-d H:i:s'),'如果邮件客户端不支持HTML则显示此内容');
+//        var_dump($res);
+
+        //带附件
+        $Attachment = [
+            //直接添加附件
+            Env::get("root_path") . "test.jpg",
+            //添加附件并重命名
+            'change_name.png' => Env::get("root_path") . "test.jpg"
+        ];
+//        dump($Attachment);exit;
+        $res = $mail->sendEMail(
+            ['34****7@qq.com'],
+            '测试邮件主题'. time(),
+            '<h1>这里是邮件内容</h1>' . date('Y-m-d H:i:s'),
+            '如果邮件客户端不支持HTML则显示此内容',
+            $Attachment);
+        var_dump($res);
+
+
     }
     public function test(){
 //        $data = input('post.');
