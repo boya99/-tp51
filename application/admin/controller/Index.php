@@ -73,6 +73,14 @@ class Index extends Controller
 //        echo '234';
 //        $this->disply();
     }
+    //自己用百度上传插件上传，成功上传
+    public function upload(){
+        return $this->fetch();
+    }
+    //用uploadify插件上传，成功上传
+    public function up(){
+        return $this->fetch();
+    }
     public function welcome(){
         return '欢迎来到后台首页';
     }

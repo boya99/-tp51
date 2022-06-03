@@ -48,4 +48,15 @@ class Category extends Model
 //        echo $this->getLastSql();
         return $result;
     }
+    public function getCategoryByParentId($parendId = 0){
+        $data = [
+            'status'=>1,
+            'parent_id'=>$parendId,
+        ];
+        $order = [
+            'id'=>'desc'
+        ];
+        return $this->where($data)->order($order)->select();
+
+    }
 }

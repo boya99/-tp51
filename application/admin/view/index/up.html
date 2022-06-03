@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UploadiFive Test</title>
+    <script src="__STATIC__/admin/uploadify/jquery.min.js" type="text/javascript"></script>
+    <script src="__STATIC__/admin/uploadify/jquery.uploadifive.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/uploadify/uploadifive.css">
+    <style type="text/css">
+        body {
+            font: 13px Arial, Helvetica, Sans-serif;
+        }
+        .uploadifive-button {
+            float: left;
+            margin-right: 10px;
+        }
+        #queue {
+            border: 1px solid #E5E5E5;
+            height: 177px;
+            overflow: auto;
+            margin-bottom: 10px;
+            padding: 0 3px 3px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+<!--dom结构部分-->
+<h1>UploadiFive Demo</h1>
+<form>
+    <div id="queue"></div>
+    <input id="file_upload" name="file" type="file" multiple="true">
+    <a style="position: relative; top: 8px;" href="javascript:$('#file_upload').uploadifive('upload')">Upload Files</a>
+</form>
+<script>
+    var SCOPE = {
+        'city_url' : '{:url('api/city/getCitysByParentId')}',
+        'category_url' : '{:url('api/category/getCategoryByParentId')}',
+        'uploadify_swf' : '__STATIC__/admin/uploadify/uploadify.swf',
+        'image_upload' : '{:url('api/image/upload')}',
+    };
+</script>
+<script>
+    $(function() {
+        // $("#file_upload").uploadify({
+        //     'auto'             : true,
+        //     'swf'             : SCOPE.uploadify_swf,
+        //     'uploader'        : SCOPE.image_upload,
+        //     'buttonText'      : '图片上传',
+        //     'fileTypeDesc'    : 'Image files',
+        //     'fileObjName'     : 'file',
+        //     'fileTypeExts'    : '*.gif; *.jpg; *.png',
+        //     'onUploadSuccess' : function(file, data, response) {
+        //         console.log(file);
+        //         console.log(data);
+        //         console.log(response);
+        //         if(response) {
+        //             var obj = JSON.parse(data);
+        //             $("#upload_org_code_img").attr("src", obj.data);
+        //             $("#file_upload_image").attr("value", obj.data);
+        //             $("#upload_org_code_img").show();
+        //         }
+        //     }
+        // });
+        $('#file_upload').uploadifive({
+            'auto'             : true,
+            'buttonText'      : '图片上传',
+            'fileTypeDesc'    : 'Image files',
+            'fileType'         : '.jpg,.jpeg,.gif,.png',
+            'fileObjName'     : 'file',
+            'queueID'          : 'queue',
+            'uploadScript'     : SCOPE.image_upload,
+            'onUploadComplete' : function(file, data) {
+                console.log(file);
+                console.log(data);
+
+                },
+
+        });
+
+    });
+</script>
+</body>
+</html>
