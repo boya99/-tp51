@@ -42,10 +42,11 @@ class Deal extends BaseModel
 	 */
 	public function getNormalDealByCategoryCityId($id, $cityId, $limit=10) {
 		$data  = [
-			'end_time' => ['gt', time()],
-			'category_id' => $id,
-			'city_id' => $cityId,
-			'status' => 1,
+
+			['category_id' ,'=', $id],
+			['city_id' ,'=', $cityId],
+			['status' ,'=', 1],
+            ['end_time' ,'>', time()],
 		];
 
 		$order = [

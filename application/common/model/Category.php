@@ -40,12 +40,7 @@ class Category extends Model
             'listorder'=>'desc',
             'id'=>'desc',
         ];
-        $result =  $this->where($data)->order($order)->paginate(10,true,[
-            'type'     => 'bootstrap',
-            'var_page' => 'page',
-            ''
-        ]);
-//        echo $this->getLastSql();
+        $result =  $this->where($data)->order($order)->paginate();
         return $result;
     }
     public function getCategoryByParentId($parendId = 0){
@@ -61,8 +56,8 @@ class Category extends Model
     }
     public function getNormalCategoryByParentId($parentId=0) {
         $data = [
-            'status' => 1,
-            'parent_id' => $parentId,
+            ['status','=', 1],
+            ['parent_id' ,'=', $parentId],
         ];
 
         $order = [
@@ -72,5 +67,46 @@ class Category extends Model
         return $this->where($data)
             ->order($order)
             ->select();
+    }
+
+
+
+    public function getNormalRecommendCategoryByParentId($id=0, $limit=5) {
+        $data = [
+            'parent_id' => $id,
+            'status' => 1,
+        ];
+
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc',
+        ];
+
+        $result = $this->where($data)
+            ->order($order);
+        if($limit) {
+            $result = $result->limit($limit);
+        }
+
+        return $result->select();
+
+    }
+
+    public function getNormalCategoryIdParentId($ids) {
+        $data = [
+            'parent_id' => [ implode(',', $ids)],
+            'status' => 1,
+        ];
+
+        $order = [
+            'listorder' => 'desc',
+            'id' => 'desc',
+        ];
+
+        $result = $this->where($data)
+            ->order($order)
+            ->select();
+
+        return $result;
     }
 }

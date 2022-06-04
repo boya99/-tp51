@@ -9,14 +9,16 @@ class Category extends Base
     public function __construct()
     {
 
+        parent::__construct();
         $this->obj = model("Category");
-//        $this->obj= new \app\common\model\Category();
+
     }
 
     public function index()
     {
         $parentId = input('get.parent_id',0,'intval');
         $categorys = $this->obj->getFirstCategorys($parentId);
+
         $this->assign('categorys',$categorys);
 
         return $this->fetch();

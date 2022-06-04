@@ -1,7 +1,12 @@
 <?php
 namespace app\admin\controller;
+use think\App;
 use think\Controller;
 class Base extends  Controller {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function status() {
         // 获取值

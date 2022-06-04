@@ -11,8 +11,8 @@ class Featured extends BaseModel
      */
     public function getFeaturedsByType($type) {
         $data = [
-            'type' => $type,
-            'status' => ['neq', -1],
+            ['type' ,'=', $type],
+            ['status' , '<>', -1],
         ];
 
         $order = ['id'=>'desc'];

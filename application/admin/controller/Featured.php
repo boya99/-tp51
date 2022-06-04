@@ -5,6 +5,7 @@ class Featured extends  Base
 {
     private  $obj;
     public function __construct() {
+        parent::__construct();
         $this->obj = model("Featured");
     }
 

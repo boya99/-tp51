@@ -10,6 +10,7 @@ class Bis extends Controller
     public function __construct()
     {
 
+
         $this->obj=new \app\common\model\Bis();
     }
 
