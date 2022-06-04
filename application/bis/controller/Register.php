@@ -26,7 +26,7 @@ class Register extends  Controller
         //获取表单的值
         $data = input('post.');
         //检验数据
-        $validate = validate('Bis');
+//        $validate = validate('Bis');
 //        if(!$validate->scene('add')->check($data)){
 //            $this->error($validate->getError());
 //        }

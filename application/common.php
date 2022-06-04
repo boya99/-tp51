@@ -134,3 +134,18 @@ function bisRegister($status) {
     }
     return $str;
 }
+
+function getSeCityName($path) {
+    if(empty($path)) {
+        return '';
+    }
+    if(preg_match('/,/', $path)) {
+        $cityPath = explode(',', $path);
+        $cityId = $cityPath[1];
+    }else {
+        $cityId = $path;
+    }
+
+    $city = model('City')->get($cityId);
+    return $city->name;
+}

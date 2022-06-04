@@ -44,6 +44,7 @@ class Bis extends Controller
         $citys = model('City')->getNormalCitysByParentId();
         //获取一级栏目的数据
         $categorys = model('Category')->getNormalCategoryByParentId();
+
         // 获取商户数据
         $bisData = model('Bis')->get($id);
         $locationData = model('BisLocation')->get(['bis_id'=>$id, 'is_main'=>1]);
