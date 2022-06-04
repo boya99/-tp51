@@ -65,10 +65,11 @@ class Index extends Controller
 //       var_dump(\config('map.ak'));
 //       dump(\config());
 
-//       echo "<hr/>";
-//       \Map::getLngLat('北京市海淀区上地十街10号');
-//       echo "<hr/>";
-       return \Map::staticimage('北京市昌平区沙河地铁站');
+       echo "<hr/>";
+      $res =   \Map::getLngLat('北京市海淀区上地十街10号');
+      var_dump($res);
+       echo "<hr/>";
+//       return \Map::staticimage('北京市昌平区沙河地铁站');
 
 //        echo '234';
 //        $this->disply();
