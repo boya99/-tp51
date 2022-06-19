@@ -149,3 +149,23 @@ function getSeCityName($path) {
     $city = model('City')->get($cityId);
     return $city->name;
 }
+function countLocation($ids) {
+    if(!$ids) {
+        return 1;
+    }
+
+    if(preg_match('/,/', $ids)) {
+        $arr = explode(',', $ids);
+        return count($arr);
+    }
+
+}
+
+// 设置订单号
+function setOrderSn() {
+    list($t1, $t2) = explode(' ', microtime());
+    //echo $t1."<br />";
+    //echo $t2."<br/>";exit;
+    $t3 = explode('.', $t1*10000);
+    return $t2.$t3[0].(rand(10000, 99999));
+}

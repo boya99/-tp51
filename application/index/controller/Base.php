@@ -56,12 +56,15 @@ class Base extends Controller
     public function getRecommendCats() {
         $parentIds = $sedcatArr = $recomCats = [];
         $cats = model('Category')->getNormalRecommendCategoryByParentId(0,5);
+//        var_dump($cats->toArray());exit;
         foreach($cats as $cat) {
             $parentIds[] = $cat->id;
         }
         // 获取二级分类的数据
         $sedCats = model('Category')->getNormalCategoryIdParentId($parentIds);
-
+//        echo model('Category')->getLastSql();
+//        var_dump($parentIds);
+//        var_dump($sedCats);exit;
         foreach($sedCats as $sedcat) {
             $sedcatArr[$sedcat->parent_id][] = [
                 'id' => $sedcat->id,

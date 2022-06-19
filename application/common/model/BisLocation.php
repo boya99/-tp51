@@ -20,9 +20,8 @@ class BisLocation extends BaseModel
 
     public function getNormalLocationsInId($ids) {
         $data = [
-
-            'status' => 1,
-            'id' => [ $ids],
+            ['status','=', 1],
+            ['id','in', $ids],
         ];
         return $this->where($data)
             ->select();

@@ -42,7 +42,6 @@ class Deal extends BaseModel
 	 */
 	public function getNormalDealByCategoryCityId($id, $cityId, $limit=10) {
 		$data  = [
-
 			['category_id' ,'=', $id],
 			['city_id' ,'=', $cityId],
 			['status' ,'=', 1],
@@ -90,7 +89,9 @@ class Deal extends BaseModel
 			
 			$datas[]="city_id = ".$data['city_id'];
 		}	
-		
+
+		Log::write('where 数组='.json_encode($datas));
+		Log::write('order 数组='.json_encode($order));
 		$result = $this->where(implode(' AND ',$datas))
 			->order($order)
 			->paginate();

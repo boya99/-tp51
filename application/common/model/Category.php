@@ -78,7 +78,7 @@ class Category extends Model
         ];
 
         $order = [
-            'listorder' => 'desc',
+            'listorder' => 'asc',
             'id' => 'desc',
         ];
 
@@ -94,8 +94,8 @@ class Category extends Model
 
     public function getNormalCategoryIdParentId($ids) {
         $data = [
-            'parent_id' => [ implode(',', $ids)],
-            'status' => 1,
+            ['status' ,'=', 1],
+            ['parent_id' ,'in',  implode(',', $ids)],
         ];
 
         $order = [

@@ -23,11 +23,14 @@
             <div class="item-status ">
               <span class="ico-status ico-jingxuan"></span>
             </div>
-            <img src="{$deal.image}" class="item-img-large" />
+<!--            <img src="{$deal.image}" class="item-img-large" />-->
+
+            <img src="__STATIC__/index/image/faf2b2119313b07eadf19d880bd7912396dd8ce6.jpg" class="item-img-large" />
           </div>
           <ul class="images-list clearfix">
             <li class="images images-last">
-              <img src="{$deal->image}" />
+<!--              <img src="{$deal->image}" />-->
+              <img src="__STATIC__/index/image/faf2b2119313b07eadf19d880bd7912396dd8ce6.jpg" />
             </li>
           </ul>
           <div class="erweima-share-collect">
@@ -81,7 +84,7 @@
               <div class="validdate-buycount-area static-hook-real static-hook-id-11">
                 <div class="item-countdown-row">
                   <span class="name">有效期</span>
-                  <span class="value">{$deal.coupons_end_time|date="Y-m-d H:i:s",###}</span>
+                  <span class="value">{$deal.coupons_end_time|date="Y-m-d H:i:s"}</span>
                 </div>
                 <div class="item-buycount-row j-item-buycount-row">
                   <div class="name">数&nbsp;&nbsp;&nbsp;量</div>
@@ -141,6 +144,7 @@
                   <div class="w-map">
 
                     <img src="{:url('map/getMapImage', ['data'=>$mapstr])}">
+
                   </div>
                 </div>
                 <div class="branch-detail">
